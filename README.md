@@ -19,4 +19,23 @@ Nous vous conseillons plutôt Google Chrome ou encore Microsoft Edge.
 Veuillez utiliser l'application en plein écran, sur un écran de 1920x1080 pixels et au format 16:9 pour une expérience optimale.
 
 # Quelques images
-![home-dark-mode](./git-images/example1.png) ![home-dark-mode](./git-images/example2.png)
+
+Accueil de l'application en mode sombre :
+
+![home-dark-mode](./git-images/example1.png)
+
+En mode clair :
+
+![home-dark-mode](./git-images/example2.png)
+
+Affichage des albums :
+
+![albums-table](./git-images/example3.png)
+
+Affichage d'un album :
+
+![home-dark-mode](./git-images/example4.png)
+
+Affichage d'un artiste :
+
+![home-dark-mode](./git-images/example5.png)
