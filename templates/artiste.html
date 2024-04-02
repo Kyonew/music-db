@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block title %}
+{{ elements[0][0] }}
+{% endblock %}
+{% block content %}
+
+<div class="display-artiste">
+
+    <div class="pic-title">
+        <img src="{{ elements[0][6] }}" alt=" photo {{ elements[0][0] }}">
+        <h1>Informations sur <br> {{ elements[0][0] }}</h1>
+
+    </div>
+    
+    {% set is_liked = elements[0][5] %}
+    {% if is_liked == 'False' %}
+        <li class="likeArtiste">
+            <a href="{{ url_for('likeArtiste', artisteID=artisteID) }}">
+                <i class='bx bx-heart icon' ></i>
+                <span class="text nav-text">Ajouter aux favoris</span>
+            </a>
+        </li>
+    {% else %}
+        <li class="notlikeArtiste">
+            <a href="{{ url_for('notLikeArtiste', artisteID=artisteID) }}">
+                <i class='bx bx-trash icon' ></i>
+                <span class="text nav-text">Retirer des favoris</span>
+            </a>
+        </li>
+    {% endif %}
+
+    <div class="info-artiste">
+        <p>Nom</p>
+        <h3>{{ elements[0][1] }}</h3>
+        
+        <p>Prénom</p>
+        <h3>{{ elements[0][2] }}</h3>
+
+        <p>Genre</p>
+        <h3>{{ elements[0][3] }}</h3>
+
+        <p>Date de naissance</p>
+        <h3>{{ elements[0][4] }}</h3>
+    </div>
+
+    <li class="editArtiste">
+        <a href="{{ url_for('editArtiste', artisteID=artisteID) }}">
+            <i class='bx bx-coin-stack icon' ></i>
+            <span class="text nav-text">Modifier les informations</span>
+        </a>
+    </li>
+
+</div> 
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block title %}
+Rechercher
+{% endblock %}
+{% block content %}
+
+<div class="search-page">
+    <h1>Résultats pour « {{ query }} »</h1>
+
+    {% if vide %}
+
+        <h2>Aucune correspondance trouvée :(</h2>
+    {% else %}
+        <ul class="bdd-table">
+            <li class="table-header">
+                <div class="col col-1">Album ID</div>
+                <div class="col col-2">Nom de l'album</div>
+                <div class="col col-3">Date de sortie</div>
+                <div class="col col-4">Nombre de morceaux</div>
+                <div class="col col-5">Genre</div>
+                <div class="col col-6">Artiste</div>
+            </li>
+            {% for element in elements %}
+            <li class="table-row">
+                <div class="col col-1">{{ element[0] }}</div>
+                <div class="col col-2"><a href="{{ url_for('album', albumID=element[0]) }}">{{ element[1] }}</a></div>
+                <div class="col col-3">{{ element[2] }}</div>
+                <div class="col col-4">{{ element[3] }}</div>
+                <div class="col col-5">{{ element[4] }}</div>
+                <div class="col col-6">{{ element[5] }}</div>
+            </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block title %}
+Ajouter un nouvel album
+{% endblock %}
+{% block content %}
+
+<div class="addAlbum_form">
+
+    <h2>Ajouter un album</h2>
+
+    <form action="{{ url_for('addrec') }}" method="POST">
+
+        <div class="formu">
+            <input type="text" id="albumname" name="albumName" placeholder="Nom de l'album*" required='required'>
+            <br>
+            <input type="text" id="dds" name="dateDeSortie" placeholder="Date de sortie*" required='required'>
+            <br>
+            <input type="number" id="nbrmrc" name="nbrMorceaux" placeholder="Nombre de morceaux*" required='required'>
+            <br>
+            <input type="text" id="artistname" name="artist-name" placeholder="Nom de l'artiste*" required='required'>
+            <br>
+            <select name="genre-type" placeholder="De quel genre ?" id="genre-select">
+                <option value="1">Jazz</option>
+                <option value="2">Rock</option>
+                <option value="3">Pop</option>
+                <option value="4">Hip-Hop/Rap</option>
+                <option value="5">Electronique</option>
+                <option value="6">Classique</option>
+                <option value="7">Alternative</option>
+                <option value="8">R&B/Soul</option>
+            </select>
+
+            <p class="require">* Champ obligatoire</p>
+
+            <button id="add" type="submit">Ajouter</button>
+
+        </div>
+
+    </form>
+</div>
+
+
+{% endblock %}

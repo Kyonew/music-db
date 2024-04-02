@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block title %}
+Artistes
+{% endblock %}
+{% block content %}
+
+<div class="display-bdd home">
+    <h1>Voici les artistes enregistrés</h1>
+    <ul class="bdd-table">
+        <li class="table-header">
+            <div class="col col-1">Artiste ID</div>
+            <div class="col col-2">Pseudo</div>
+            <div class="col col-3">Nom</div>
+            <div class="col col-4">Prénom</div>
+            <div class="col col-5">Genre</div>
+        </li>
+        {% for element in elements %}
+        {% set is_liked = element[5] %}
+        <li class="table-row">
+            <div class="col col-1">{{ element[0] }}</div>
+            <div class="col col-2">
+                <a href="{{ url_for('artiste', artisteID=element[0] )}}">
+                    {% if is_liked == 'true' %}
+                    ♥
+                    {% else %}
+                    {% endif %}
+                    {{ element[1] }}
+                </a>
+            </div>
+            <div class="col col-3">{{ element[2] }}</div>
+            <div class="col col-4">{{ element[3] }}</div>
+            <div class="col col-5">{{ element[4] }}</div>
+        </li>
+        {% endfor %}
+    </ul>
+</div> 
+
+{% endblock %}
+

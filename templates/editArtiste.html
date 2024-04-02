@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block title %}
+Modification
+{% endblock %}
+{% block content %}
+
+<div class="editArtiste_form">
+
+    <h2>Modifier les informations sur {{ elements[0][0] }}</h2>
+
+    <form action="{{ url_for('editrect') }}" method="POST">
+
+        <div class="formu">
+            <input type="hidden" name="artisteID" value="{{ elements[0][5] }}">
+            <input type="hidden" name="pseudo_default" value="{{ elements[0][0] }}">
+            <input type="hidden" name="artist-last-name_default" value="{{ elements[0][1] }}">
+            <input type="hidden" name="artist-first-name_default" value="{{ elements[0][2] }}">
+            <input type="hidden" name="daybirth_default" value="{{ elements[0][4] }}">
+
+
+            <input type="text" id="artistname" name="pseudo" placeholder="{{ elements[0][0] }}">
+            <br>
+            <input type="text" id="artist-last-name" name="artist-last-name" placeholder="{{ elements[0][1] }} (Nom)">
+            <br>
+            <input type="text" id="artist-first-name" name="artist-first-name" placeholder="{{ elements[0][2] }} (Prénom)">
+            <br>
+            <input type="text" id="daybirth" name="daybirth" placeholder="{{ elements[0][4] }} (Naissance)">
+            <br>
+            <select name="genre-type" id="genre-select">
+                <option value="1">Jazz</option>
+                <option value="2">Rock</option>
+                <option value="3">Pop</option>
+                <option value="4">Hip-Hop/Rap</option>
+                <option value="5">Electronique</option>
+                <option value="6">Classique</option>
+                <option value="7">Alternative</option>
+                <option value="8">R&B/Soul</option>
+            </select>
+            
+            <br>
+            
+            <button type="submit">Modifier</button>
+
+        </div>
+
+    </form>
+</div>
+
+
+{% endblock %}

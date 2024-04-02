@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block title %}
+Suppression d'album
+{% endblock %}
+{% block content %}
+
+<div class="deleteArtiste_form">
+
+    <h2>Êtes-vous sûr de vouloir supprimer « {{ nomAlbum }} » de la base de données ?</h2>
+
+    <form action="{{ url_for('deleteRecALBUM') }}" method="POST">
+        <input type="hidden" name="albumID", value="{{ albumID }}">
+            <button id="delete" type="submit">Supprimer l'album</button>
+    </form>
+
+    <form action="/albums">
+        <button id="cancel">Annuler</button>
+    </form>
+</div>
+
+
+{% endblock %}

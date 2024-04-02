@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% block title %}
+Accueil
+{% endblock %}
+{% block content %}
+
+<div class="home">
+    <h1>Bienvenue dans la base de données <br> MusicDB</h1>
+
+    <div class="stats-box">
+        <div class="albums-box">
+            <h2><i class='bx bx-album icon' ></i> {{ albumsSize }}</h2>            
+            <p>Albums enregistrés</p>
+
+        </div>
+        <div class="artiste-box">
+            <h2><i class='bx bx-user icon'></i>{{ artisteSize }}</h2>
+            <p>Artistes enregistrés </p>          
+
+        </div>
+    </div>
+
+
+    <div class="fav-alb">
+        <h2>♥ Vos albums favoris :</h2>
+        {% if albumsLike == [] %}
+        <p>Aucun album mis en favoris :'(</p>
+        {% else %}
+        
+        <ul class="bdd-table bdd-table-fav">
+            <li class="table-header">
+                <div class="col0"></div>
+                <div class="col col-2">Nom de l'album</div>
+                <div class="col col-3">Genre</div>
+                <div class="col col-4">Artiste</div>
+            </li>
+            {% for element in albumsLike %}
+            <li class="table-row">
+                <img src="{{ element[4] }}" alt="cover album">
+                <div class="col col-1"><a href="{{ url_for('album', albumID=element[3]) }}">{{ element[0] }}</a></div>
+                <div class="col col-2">{{ element[1] }}</div>
+                <div class="col col-3">{{ element[2] }}</div>
+            
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <div class="fav-art">
+        <h2>♥ Vos artistes favoris :</h2>
+        {% if artisteLike == [] %}
+        <p>Aucun.e artiste mis en favoris :'(</p>
+        {% else %}
+
+        <ul class="bdd-table bdd-table-fav">
+
+            {% for element in artisteLike %}
+            <li class="table-row">
+                <img src="{{ element[2] }}" alt="pic artiste">      
+                <div class="col col-1"><a href="{{ url_for('artiste', artisteID=element[0]) }}">{{ element[1] }}</a></div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}

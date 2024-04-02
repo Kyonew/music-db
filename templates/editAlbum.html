@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block title %}
+Modification
+{% endblock %}
+{% block content %}
+
+<div class="editAlbum_form">
+
+    <h2>Modifier les informations de {{ elements[0][1] }}</h2>
+
+    <form action="{{ url_for('editrecALBUM') }}" method="POST">
+
+        <div class="formu">
+            <input type="hidden" name="albumID" value="{{ elements[0][0] }}">
+            <input type="hidden" name="nom_default" value="{{ elements[0][1] }}">
+            <input type="hidden" name="datesortie_default" value="{{ elements[0][2] }}">
+            <input type="hidden" name="nbrMorceaux_default" value="{{ elements[0][3] }}">
+            <input type="hidden" name="genre-type-album_default" value="{{ elements[0][4] }}">
+            <input type="hidden" name="artiste_default" value="{{ elements[0][5] }}">
+            <input type="hidden" name="artisteID" value="{{ elements[0][6] }}">
+
+
+            <input type="text" id="nom_album" name="nom_album" placeholder="{{ elements[0][1] }} (Nom)">
+            <br>
+            <input type="text" id="datesortie" name="datesortie" placeholder="{{ elements[0][2] }} (date de sortie)">
+            <br>
+            <input type="text" id="nbrMorceaux" name="nbrMorceaux" placeholder="{{ elements[0][3] }} (Nombre morceaux)">
+            <br>
+            <select name="genre-type-album" placeholder="De quel genre ?" id="genre-select">
+                <option value="1">Jazz</option>
+                <option value="2">Rock</option>
+                <option value="3">Pop</option>
+                <option value="4">Hip-Hop/Rap</option>
+                <option value="5">Electronique</option>
+                <option value="6">Classique</option>
+                <option value="7">Alternative</option>
+                <option value="8">R&B/Soul</option>
+            </select>
+            
+            <input type="text" id="artiste" name="artiste" placeholder="{{ elements[0][5] }}*" disabled>
+
+            <p>* Indisponible pour le moment</p>
+
+            <button type="submit">Modifier</button>
+
+        </div>
+
+    </form>
+</div>
+
+
+{% endblock %}

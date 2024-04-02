@@ -1,0 +1,729 @@
+/* Google Font Import - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    color: var(--text-color);
+
+}
+
+/* Le root permet de créer des variables, qui seront accessibles ensuite dans les autres propriétés */
+:root{ 
+    /* ===== Couleurs ===== */
+    --body-color: #E4E9F7;
+    --sidebar-color: #FFF;
+    --primary-color: #695CFE;
+    --primary-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color: #242424;
+
+    /* ====== Transition ====== */
+    --tran-03: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.3s ease;
+    --tran-05: all 0.3s ease;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+}
+
+
+::selection{
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+/* Changement des couleurs lors du passage au darkmode */
+body.dark{
+    --body-color: #18191a;
+    --sidebar-color: #242526;
+    --primary-color: #3a3b3c;
+    --primary-color-light: #3a3b3c;
+    --toggle-color: #fff;
+    --text-color: #ccc;
+}
+
+/* ===== Sidebar (barre de navigation latérale ===== */
+ .sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 300px;
+    padding: 10px 14px;
+    background: var(--sidebar-color);
+    transition: var(--tran-05);
+    /* z-index permet de mettre la barre tout devant, au premier plan, d'où le 100, qui est un nombre élévé pour un z-index */
+    z-index: 100;  
+}
+.sidebar.close{
+    width: 88px;
+}
+
+.sidebar li{
+    height: 50px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.sidebar header .image,
+.sidebar .icon{
+    min-width: 60px;
+    border-radius: 6px;
+}
+
+.sidebar .icon{
+    min-width: 60px;
+    border-radius: 6px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.sidebar .text,
+.sidebar .icon{
+    color: var(--text-color);
+    transition: var(--tran-03);
+}
+
+.sidebar .text{
+    font-size: 17px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 1;
+}
+.sidebar.close .text{
+    opacity: 0;
+}
+
+/* =========================== */
+
+.sidebar header{
+    position: relative;
+}
+
+.sidebar header .image-text{
+    display: flex;
+    align-items: center;
+}
+.sidebar header .logo-text{
+    display: flex;
+    flex-direction: column;
+}
+header .image-text .name {
+    margin-top: 2px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+header .image-text .profession{
+    font-size: 16px;
+    margin-top: -2px;
+    display: block;
+}
+
+.sidebar header .image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar header .image img{
+    width: 40px;
+    border-radius: 6px;
+}
+
+.sidebar header .toggle{
+    position: absolute;
+    top: 50%;
+    right: -25px;
+    transform: translateY(-50%) rotate(180deg);
+    height: 25px;
+    width: 25px;
+    background-color: var(--primary-color);
+    color: var(--sidebar-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    transition: var(--tran-05);
+}
+
+body.dark .sidebar header .toggle{
+    color: var(--text-color);
+}
+
+.sidebar.close .toggle{
+    transform: translateY(-50%) rotate(0deg);
+}
+
+.sidebar .menu{
+    margin-top: 40px;
+}
+
+.sidebar li.search-box{
+    border-radius: 6px;
+    background-color: var(--primary-color-light);
+    cursor: pointer;
+    transition: var(--tran-05);
+}
+
+.sidebar li.search-box input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: var(--primary-color-light);
+    color: var(--text-color);
+    border-radius: 6px;
+    font-size: 17px;
+    font-weight: 500;
+    transition: var(--tran-05);
+}
+.sidebar li a{
+    list-style: none;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: var(--tran-03);
+}
+
+.menu-bar .bottom-content .addelement {
+    border-radius: 6px;
+    background-color: var(--primary-color);
+
+}
+
+.menu-bar .bottom-content .addelement i, 
+.menu-bar .bottom-content .addelement span {
+    color: #FFF;
+}
+
+.sidebar li a:hover{
+    background-color: var(--primary-color);
+}
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text{
+    color: var(--sidebar-color);
+}
+
+body.dark .sidebar li a:hover .icon,
+body.dark .sidebar li a:hover .text{
+    color: var(--text-color);
+}
+
+.sidebar .menu-bar{
+    height: calc(100% - 55px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: scroll;
+}
+
+/* permet de forcer le non affichage d'une barre de scroll */
+.menu-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.sidebar .menu-bar .mode {
+    border-radius: 6px;
+    background-color: var(--primary-color-light);
+    position: relative;
+    transition: var(--tran-05);
+}
+
+.menu-bar .mode .sun-moon{
+    height: 50px;
+    width: 60px;
+}
+
+.mode .sun-moon i {
+    position: absolute;
+}
+.mode .sun-moon i.sun {
+    opacity: 0;
+}
+body.dark .mode .sun-moon i.sun {
+    opacity: 1;
+}
+body.dark .mode .sun-moon i.moon {
+    opacity: 0;
+}
+
+
+.menu-bar .bottom-content .toggle-switch{
+    position: absolute;
+    right: 0;
+    height: 100%;
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.toggle-switch .switch{
+    position: relative;
+    height: 22px;
+    width: 40px;
+    border-radius: 25px;
+    background-color: var(--toggle-color);
+    transition: var(--tran-05);
+}
+
+/* Correspond au bouton de darkmode */
+.switch::before{
+    content: '';
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    background-color: var(--sidebar-color);
+    transition: var(--tran-04);
+}
+
+body.dark .switch::before{
+    left: 20px;
+}
+
+.result {
+    padding-left: 18%;
+    padding-top: 5%;
+    transition: var(--tran-05);
+}
+
+.sidebar.close ~ .result {
+    padding-left: 10%;
+    padding-top: 5%;
+    transition: var(--tran-05);
+}
+
+/* =========================== */
+
+.home {
+    position: absolute;
+    margin-top: 5%;
+    left: 18%;
+    height: 100vh;
+    width: calc(100% - 19%);
+    align-items: center;
+    text-align: center;
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+    h1 {
+        font-size: 3em;
+    }
+    .fav-art {
+        .col {
+            margin-top: auto;
+            margin-bottom: auto;
+            text-align: left;
+        }
+        .col-1 {
+            flex-basis: 94.6%;
+        }
+        img {
+            width: 60px;
+            margin-right: 10px;
+            border-radius: 50px;
+        }
+    }
+    .fav-alb {
+        .table-header {
+            text-align: center;
+            .col-2 {
+                text-align: left;
+                padding-left: 9%;
+            }
+            .col-3 {
+                text-align: left;
+            }
+        }
+        .table-row {
+            img {
+                width: 60px;
+                border-radius: 10px;
+            }
+            .col {
+                margin-top: auto;
+                margin-bottom: auto;
+            }
+        }
+    }
+}
+
+
+
+.home .stats-box {
+    display: flex;
+    margin-top: 130px;
+    flex-direction: row;
+    justify-content: space-around;
+    border-radius: 10px;
+    p, i, h2 {
+        color: #FFF;
+    }
+}
+
+.home .stats-box i {
+    padding-right: 10px;
+}
+
+
+.home .stats-box .albums-box,
+.home .stats-box .artiste-box {
+
+    padding: 50px 100px;
+    border-radius: 10px;
+}
+
+.home .stats-box .albums-box {
+    /* Les  dégradés on été réalisés à l'aide du site cssgradient.io */
+    background: rgb(67,70,255);
+    background: linear-gradient(90deg, rgba(67,70,255,1) 0%, rgba(230,0,241,1) 100%);
+}
+
+.home .stats-box .artiste-box {
+    background: rgb(230,0,241);
+    background: linear-gradient(90deg, rgba(230,0,241,1) 0%, rgba(67,70,255,1) 100%);
+
+}
+
+
+.addAlbum_form,
+.editArtiste_form,
+.deleteArtiste_form {
+    position: absolute;
+    margin-top: 6%;
+    left: 20%;
+    width: calc(100% - 15%);
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+}
+
+.deleteArtiste_form,
+.editAlbum_form,
+.editArtiste_form {
+    position: relative;
+    left: 18%;
+    width: calc(100% - 18%);
+    transition: var(--tran-05);
+}
+
+.editAlbum_form,
+.editArtiste_form {
+    h2 {
+        margin-top: 5%;
+    }
+    form {
+        margin-top: 3%;
+        input,
+        select {
+            margin-bottom: 15px;
+            border-radius: 6px;
+            padding: 10px 5px;
+            border: 2.5px solid var(--text-color)
+        }
+    }
+    p {
+        font-size: small;
+    }
+
+    button {
+        margin-top: 2%;
+        border-radius: 6px;
+        padding: 10px 15px;
+        color: var(--text-color);
+        background-color: rgb(92, 255, 92)
+    }
+
+}
+
+.deleteArtiste_form form {
+    margin-top: 20px;
+
+    button {
+        color: #FFF;
+        background-color: var(--primary-color);
+    }
+    #delete {
+        background-color: red;
+    }
+}
+
+.deleteArtiste_form button {
+    list-style: none;
+    max-width: 13%;
+    padding: 10px 5px;
+    text-align: center;
+    color: var(--text-color);
+    border-radius: 6px;
+
+}
+
+.addAlbum_form h2 {
+    margin-bottom: 20px;
+}
+
+.addAlbum_form input,
+.addAlbum_form select {
+    width: 30%;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 20px;
+    border: 2.5px solid var(--text-color);
+}
+
+.addAlbum_form select {
+    width: 10%;
+    color: var(--text-color);
+}
+
+.addAlbum_form .formu #nbrmrc, 
+.addAlbum_form .formu #dds,
+.addAlbum_form .formu #artistname,
+.addAlbum_form .formu #albumname {
+    width: 12%;
+}
+
+.addAlbum_form .formu #add {
+    list-style: none;
+    background-color: rgb(2, 168, 2);
+    max-width: 20%;
+    padding: 10px 15px;
+    text-align: center;
+    color: #FFF;
+    border-radius: 6px;
+    margin-top: 2%;
+}
+
+/* ici, avec le ~ on permet de changer les propriétés d'une div (ou autre
+   lorsque que la sidebar est fermée */
+.sidebar.close ~ .addAlbum_form {
+    left: 10%;
+    width: calc(100% - 10%);
+}
+
+.sidebar.close ~ .deleteArtiste_form,
+.sidebar.close ~ .editArtiste_form,
+.sidebar.close ~ .editAlbum_form {
+    left: 10%;
+    width: calc(100% - 10%);
+}
+
+.display-artiste,
+.display-album {
+    position: absolute;
+    margin-top: 4%;
+    top: 0;
+    left: 20%;
+    height: 100vh;
+    width: calc(100% - 20%);
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+    .pic-title,
+    .pic-title-alb {
+        display: flex;
+        flex-direction: row;
+        img {
+            max-width: 100px;
+            margin-right: 2%;
+            margin-bottom: 2%;
+            border-radius: 50px;
+        }
+    }
+}
+
+.display-album {
+    .pic-title-alb {
+        img {
+            border-radius: 10px;
+        }
+    }
+}
+
+
+
+.likeAlbum,
+.notlikeAlbum,
+.likeArtiste,
+.notlikeArtiste {
+    list-style: none;
+    background-color: var(--primary-color);
+    max-width: 11%;
+    padding: 7px 3px;
+    text-align: center;
+    border-radius: 6px;
+    span, i {
+        color: #FFF;
+    }
+}
+
+.info-artiste,
+.info-album {
+    padding-top: 5%;
+}
+
+.info-artiste h3,
+.info-album h3 {
+    padding-bottom: 3%;
+}
+
+.editArtiste,
+.editAlbum,
+.deleteAlbum {
+    list-style: none;
+    background-color: green;
+    max-width: 13%;
+    padding: 10px 5px;
+    text-align: center;
+    color: var(--text-color);
+    border-radius: 6px;
+    span, i{
+        color: #FFF;
+    }
+}
+
+
+.button-edition li {
+    margin-bottom: 10px;
+    i, span {
+        color: #FFF;
+    };
+
+}
+
+.deleteAlbum {
+    background-color: rgb(255, 35, 35);
+}
+
+.sidebar.close ~ .display-artiste,
+.sidebar.close ~ .display-album {
+    left: 10%;
+    width: calc(100% - 10%);
+}
+
+.display-bdd,
+.search-page {
+    position: absolute;
+    top: 0;
+    left: 17%;
+    height: 100vh;
+    width: calc(100% - 18%);
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+}
+
+.search-page {
+    margin-top: 7%;
+    h2 {
+        margin-top: 4%;
+    }
+}
+
+.display-bdd h1,
+.search-page h1,.search-page h2{
+    text-align: center;
+}
+
+.fav-alb,
+.fav-art {
+    text-align: left;
+    margin-top: 5%;
+    .bdd-table-fav {
+        text-align: center;
+        margin-top: -2%;
+    }
+    p {
+        margin-top: 2%;
+    }
+}
+
+.fav-art {
+    width: 100%;
+}
+
+.sidebar.close ~ .home {
+    left: 9%;
+    width: calc(100% - 15%);
+    transition: var(--tran-05);
+}
+
+.sidebar.close ~ .display-bdd,
+.sidebar.close ~ .search-page {
+    left: 6%;
+    height: 100vh;
+    width: calc(100% - 7%);
+}
+
+
+body.dark .home .text{
+    color: var(--text-color);
+}
+
+
+.bdd-table {
+    padding-right: 10px;
+    padding-top: 50px;
+    li {
+        border-radius: 5px;
+        padding: 25px 30px;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;  
+    }
+    .table-hearder {
+        background-color: #95A5A6;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.03em; 
+    }
+    .table-row {
+        background: var(--sidebar-color);
+        /* permet de mettre une légère ombre derrière les éléments */
+        box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+    }
+
+
+    .col-1 {
+        /* le flex-basis correspond à l'espacement entre deux éléments 
+           dans un display: flex */
+        flex-basis: 10%;
+      }
+      .col-2 {
+        flex-basis: 40%;
+      }
+      .col-3 {
+        flex-basis: 25%;
+      }
+      .col-4 {
+        flex-basis: 25%;
+      }
+      .col-5 {
+        flex-basis: 25%;
+      }
+      .col-6 {
+        flex-basis: 10%;
+      }
+}

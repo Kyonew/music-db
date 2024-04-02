@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="shortcut icon" href="https://cdn.discordapp.com/attachments/930864932067610704/1209975599951515688/musique-et-multimedia_2.png?ex=65e8e097&is=65d66b97&hm=4dc18015dddb4394f64be0bb1e24ab3e129caec3b633aaecb543d8c43741dad4&" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}" />
+        <link
+        href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+        rel="stylesheet"
+      />
+    </head>
+
+    <body>
+        <nav class="sidebar close">
+            <header>
+                <div class="image-text">
+                    <span class="image">
+                        <img src="https://cdn.discordapp.com/attachments/990602966862028860/1209439641250435102/logo.png?ex=65e6ed70&is=65d47870&hm=ed7a9f588973ad7df87a0a050dad6222774bfcb1a2df30ab237eb6654ea9173d&" alt="logo">
+                    </span>
+                    <div class="text logo-text">
+                        <span class="name">MusicDB</span>
+                        <span class="profession">Base de données</span>
+                    </div>
+                </div>
+                <i class='bx bx-chevron-right toggle'></i>
+            </header>
+            <div class="menu-bar">
+                <div class="menu">
+                    <!-- SEARCH BAR -->
+                    <form action="{{ url_for('search') }}" method="POST" >
+                        <li class="search-box">
+                            <i class='bx bx-search icon'></i>
+                            <input type="text" name="query" placeholder="Rechercher...">
+                        </li>
+                    </form>
+                    
+                    
+                    <ul class="menu-links">
+                        <li class="nav-link">
+                            <a href="/">
+                                <i class='bx bx-home-alt icon' ></i>
+                                <span class="text nav-text">Menu</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="albums">
+                                <i class='bx bx-album icon' ></i>
+                                <span class="text nav-text">Albums</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="artistes">
+                                <i class='bx bx-user icon'></i>
+                                <span class="text nav-text">Artistes</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bottom-content">
+                    <li class="addelement">
+                        <a href="addAlbum">
+                            <i class='bx bx-coin-stack icon' ></i>
+                            <span class="text nav-text">Ajouter un élément</span>
+                        </a>
+                    </li>
+                    <li class="mode">
+                        <div class="sun-moon">
+                            <i class='bx bx-moon icon moon'></i>
+                            <i class='bx bx-sun icon sun'></i>
+                        </div>
+                        <span class="mode-text text">Mode sombre</span>
+                        <div class="toggle-switch">
+                            <span class="switch"></span>
+                        </div>
+                    </li>
+                    
+                </div>
+            </div>
+        </nav>
+
+        <section class="overlay"></section>
+
+
+
+        <script>
+
+        const body = document.querySelector('body');
+        const sidebar = body.querySelector('nav');
+        const toggle = body.querySelector(".toggle");
+        const searchBtn = body.querySelector(".search-box");
+        const modeSwitch = body.querySelector(".toggle-switch");
+        const modeText = body.querySelector(".mode-text");
+
+        // Récupérer le mode sombre enregistré (sinon, utiliser la valeur par défaut)
+        const preferredTheme = localStorage.getItem('theme') || 'light';
+        body.classList.add(preferredTheme);
+        modeText.innerText = preferredTheme === 'dark' ? 'Mode Clair' : 'Mode Sombre';
+
+        // Gestion des événements pour la barre latérale
+        toggle.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        });
+        searchBtn.addEventListener("click", () => {
+            sidebar.classList.remove("close");
+        });
+
+        // Gestion du changement de mode
+        modeSwitch.addEventListener("click", () => {
+            body.classList.toggle("dark");
+            const currentTheme = body.classList.contains("dark") ? 'dark' : 'light';
+            modeText.innerText = currentTheme === 'dark' ? 'Mode Clair' : 'Mode Sombre';
+            localStorage.setItem('theme', currentTheme); // Enregistrer le mode sombre dans localStorage
+        });
+        </script>
+
+        {% block content %}
+        {% endblock %}
+        
+    </body>
+</html>
