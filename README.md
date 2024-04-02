@@ -11,7 +11,7 @@
 Après le téléchargement, lancez le fichier 'app.py' à la racine du dossier. 
 Dans la console de votre IDE, deux URL apparaîtrons, ouvrez une des deux (de préférence la deuxième)  
 
-\!/ Evitez d'utiliser des navigateurs comme Mozilla Firefox. Ces derniers chargent mal certaines propriétés CSS \!/
+⚠️ Evitez d'utiliser des navigateurs comme Mozilla Firefox. Ces derniers chargent mal certaines propriétés CSS ⚠️
 
 Nous vous conseillons plutôt Google Chrome ou encore Microsoft Edge.
 
