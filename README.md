@@ -11,7 +11,7 @@
 # Intégration de vos clés APIs 
 
 - Dans `api_key.py`, remplacez `votre-api-genius` par votre clé api Genius
-- À la ligne **571**, remplacez `cle-api-lastFM` par votre clé api LastFM
+- À la ligne **571** de `app.py`, remplacez `cle-api-lastFM` par votre clé api LastFM
 
 # Lancement de l'application 
 
