@@ -6,6 +6,7 @@
   - fuzzywuzzy
   - requests
 
+- Récupérer vos clés APIs [Genius](https://genius.com/api-clients/new) et [LastFM](https://www.last.fm/api/account/create)
 # Lancement de l'application 
 
 Après le téléchargement, lancez le fichier 'app.py' à la racine du dossier. 
