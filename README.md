@@ -7,6 +7,12 @@
   - requests
 
 - Récupérer vos clés APIs [Genius](https://genius.com/api-clients/new) et [LastFM](https://www.last.fm/api/account/create)
+
+# Intégration de vos clés APIs 
+
+- Dans `api_key.py`, remplacez `votre-api-genius`par votre clé api Genius
+- À la ligne **571**, remplacez `cle-api-lastFM` par votre clé api LastFM
+
 # Lancement de l'application 
 
 Après le téléchargement, lancez le fichier 'app.py' à la racine du dossier. 
